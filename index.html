@@ -1,27 +1,61 @@
-<html>
-  <body>
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed"></div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Twitch Embed - Destructolive</title>
 
-    <!-- Load the Twitch embed script -->
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <!-- Adiciona o Bootstrap para responsividade, se necessário -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element. -->
-    <script type="text/javascript">
-      var embed = new Twitch.Embed("twitch-embed", {
-        width: 854,
-        height: 480,
-        channel: "monstercat",
-        layout: "video",
-        autoplay: false,
-        // Only needed if this page is going to be embedded on other websites
-        parent: ["main.d3kpf9w53f9o6u.amplifyapp.com"]
-      });
+  <!-- Estilo básico para o layout -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 50px;
+    }
+    .container {
+      max-width: 960px;
+    }
+    #test {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
 
-      embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
-        var player = embed.getPlayer();
-        player.play();
-      });
-    </script>
-  </body>
+  <div class="container text-center">
+    <h1>Assista ao canal Destructolive ao vivo no Twitch</h1>
+
+    <!-- Espaço reservado para o Embed do Twitch -->
+    <div id="test"></div>
+  </div>
+
+  <!-- Carregar o script do Twitch -->
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+  <!-- Criar o objeto Twitch.Embed -->
+  <script type="text/javascript">
+    var parent = ['sites.google.com', 'www.gstatic.com', 'plus.destructomc.com', window.location.host];
+
+    var options = {
+      width: 720,                 // Largura do player
+      height: 1280,               // Altura do player
+      channel: "destructolive",   // Canal do Twitch
+      allowfullscreen: true,      // Permitir tela cheia
+      layout: "video-with-chat",  // Layout com vídeo e chat
+      muted: true,                // Começar com áudio mutado
+      parent: parent              // Domínios que podem embutir o conteúdo
+    };
+
+    // Inicializa o player Twitch no div com id 'test'
+    var player = new Twitch.Embed("test", options);
+  </script>
+
+  <!-- Scripts do Bootstrap (opcional, se quiser usar componentes interativos) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
 </html>
